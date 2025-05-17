@@ -8,7 +8,20 @@ import './App.css';
 
 const MainContent = () => {
   const navigate = useNavigate();
-  
+  const [landmarks, setLandmarks] = useState(null);  // 벡터값 상태 추가
+
+  const handleLandmarksUpdate = (newLandmarks) => {
+    setLandmarks(newLandmarks);
+  };
+
+  // 벡터값을 보기 좋게 포맷팅하는 함수
+  const formatLandmarks = (landmarks) => {
+    if (!landmarks) return "No hand detected";
+    return landmarks.map((point, idx) => 
+      `Point ${idx}: (${point.map(v => v.toFixed(4)).join(', ')})`
+    ).join('\n');
+  };
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -58,13 +71,20 @@ const MainContent = () => {
         
         <div className="translator-layout">
           <div className="camera-section">
-            <CSLTranslator />
+            <CSLTranslator onLandmarksUpdate={handleLandmarksUpdate} />
           </div>
           
           <div className="text-box">
             <h2>Vectors of the landmarks (Console)</h2>
             <div className="text-output">
-              Hello! (or translation result here)
+              <pre style={{ 
+                whiteSpace: 'pre-wrap', 
+                wordWrap: 'break-word',
+                maxHeight: '400px',
+                overflowY: 'auto'
+              }}>
+                {formatLandmarks(landmarks)}
+              </pre>
             </div>
           </div>
         </div>

@@ -155,12 +155,19 @@ h1 {
 }
 
 .text-output {
-  flex: 1;
-  color: #333;
-  padding: 15px;
-  background: #eeeeee;;
-  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+  font-family: monospace;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  height: 400px;
   overflow-y: auto;
+}
+
+.text-output pre {
+  margin: 0;
+  color: #000000;
 }
 
 .history-button {

@@ -34,7 +34,7 @@ const HAND_CONNECTIONS = [
   [13,17],[0,17],[17,18],[18,19],[19,20] // Pinky & Palm
 ];
 
-const CSLTranslator = () => {
+const CSLTranslator = ({ onLandmarksUpdate }) => {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const handsRef = useRef(null);
@@ -102,13 +102,13 @@ const CSLTranslator = () => {
     function onResults(results) {
       const ctx = canvasRef.current?.getContext('2d');
       ctx && ctx.clearRect(0, 0, 480, 360);
+      
       if (results.multiHandLandmarks && results.multiHandLandmarks.length > 0) {
         const landmarks = results.multiHandLandmarks[0].map(pt => [pt.x * 480, pt.y * 360]);
-        // Draw hand landmarks and connections
         if (ctx) drawHand(ctx, landmarks, HAND_CONNECTIONS);
-        // Log the normalized landmark vectors (x, y, z)
+        
         const normLandmarks = results.multiHandLandmarks[0].map(pt => [pt.x, pt.y, pt.z]);
-        console.log('Hand landmarks:', normLandmarks);
+        onLandmarksUpdate(normLandmarks);
       }
     }
 
