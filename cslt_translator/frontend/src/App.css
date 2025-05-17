@@ -37,22 +37,57 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
+  align-items: flex-start;       /* 좌측 정렬 */
+  justify-content: center;       /* 수직 중앙 정렬 유지 */
+  padding-left: 15%;            /* 왼쪽 여백 비율로 설정 */
   box-sizing: border-box;
   opacity: 1 !important;
   transform: none !important;
 }
 
+.initial-view div {
+  font-size: 12rem;
+  font-weight: 800;
+  line-height: 1;
+  margin: 0.2rem 0;
+  text-align: left;
+  letter-spacing: -2px;
+  animation: textAnimate 3s ease-in-out infinite;
+  background: linear-gradient(90deg, #ffffff, #96a8ff, #ffffff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  filter: drop-shadow(0 0 15px rgba(255,255,255,0.3));
+}
+
+@keyframes textAnimate {
+  0% {
+    background-position: 0% center;
+    transform: translateX(0) scale(1);
+    filter: drop-shadow(0 0 15px rgba(255,255,255,0.3));
+  }
+  50% {
+    background-position: 100% center;
+    transform: translateX(30px) scale(1.05);
+    filter: drop-shadow(0 0 30px rgba(255,255,255,0.6));
+  }
+  100% {
+    background-position: 0% center;
+    transform: translateX(0) scale(1);
+    filter: drop-shadow(0 0 15px rgba(255,255,255,0.3));
+  }
+}
+
 .translator-layout {
   width: 100%;
-  max-width: 1200px;
-  margin: 2rem auto;
+  max-width: 1400px;
+  margin: 3rem auto 4rem auto;
   display: flex;
-  gap: 2rem;
+  gap: 3rem;
   justify-content: center;
   align-items: stretch;
+  min-height: 80vh;
 }
 
 @keyframes logo-spin {
@@ -79,6 +114,7 @@ body {
 }
 
 h1 {
+  margin-top: 4rem;
   text-align: center;
   color: #ffffff;
   margin-bottom: 2rem;
@@ -177,5 +213,5 @@ h1 {
 /* 스크롤 섹션 컨테이너 */
 .scroll-sections {
   width: 100%;
-  margin-top: 2rem;
+  margin: 2rem 0 8rem 0;
 }
