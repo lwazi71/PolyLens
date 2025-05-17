@@ -1,8 +1,7 @@
 // frontend/firebase.js
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, push } from "firebase/database";
+import { getDatabase, ref, push, get, child } from "firebase/database";
 
-// Your actual Firebase project config
 const firebaseConfig = {
   apiKey: "AIzaSyCWpRsJAPU9iiXNaA6QrVXEfow1hQ7pfsw",
   authDomain: "polylens-f96fa.firebaseapp.com",
@@ -18,7 +17,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-// Save detected sign with metadata
+//  Write translation entry
 export function saveTranslation({ 
   detectedLabel, 
   confidence, 
@@ -28,11 +27,23 @@ export function saveTranslation({
   const refPath = ref(db, "csl_translations/");
   push(refPath, {
     label: detectedLabel,
-    confidence: `${Math.round(confidence * 100)}%`,
+    confidence: Math.round(confidence * 100),  // store as number, not string
     language,
     bufferSize,
     timestamp: Date.now()
   });
+}
+
+// Fetch past entries (optional limit, default 10)
+export async function getRecentTranslations(limit = 10) {
+  const snapshot = await get(child(ref(db), "csl_translations/"));
+  if (!snapshot.exists()) return [];
+
+  // Convert snapshot object → sorted array
+  const data = snapshot.val();
+  return Object.values(data)
+    .sort((a, b) => b.timestamp - a.timestamp)
+    .slice(0, limit);
 }
 
 export default db;
