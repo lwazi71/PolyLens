@@ -5,11 +5,11 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.communicate-section p {
-  font-size: 1.5rem;
+.section-content p {
+  font-size: 3rem;
   line-height: 1.6;
-  color: #ffffff;  /* 하얀색으로 변경 */
-  opacity: 0.9;    /* 살짝 투명도 추가하여 가독성 향상 */
+  color: #ffffff;
+  opacity: 0.9;
 }
 
 .section-image {
