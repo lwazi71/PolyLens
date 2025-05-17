@@ -22,6 +22,8 @@ const InfoSection = () => {
       <div className={`color-transition ${!isGradientVisible ? 'hidden' : ''}`} />
       <div className="info-sections">
         <CommunicateSection />
+      </div>
+      <div className="trans-sections">
         <TranslationSection />
       </div>
     </>
