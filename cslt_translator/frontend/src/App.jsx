@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import CSLTranslator from './components/CSLTranslator';
 import History from './components/History';
@@ -9,9 +9,40 @@ import './App.css';
 const MainContent = () => {
   const navigate = useNavigate();
   const [landmarks, setLandmarks] = useState(null);  // 벡터값 상태 추가
+  const [prediction, setPrediction] = useState(null); // Prediction result
+  const [isSending, setIsSending] = useState(false);
+  const debounceRef = useRef(null);
 
   const handleLandmarksUpdate = (newLandmarks) => {
     setLandmarks(newLandmarks);
+  };
+
+  const handleSend = async () => {
+    if (!landmarks ||
+      !Array.isArray(landmarks) ||
+      landmarks.length !== 21 ||
+      !landmarks.every(pt => Array.isArray(pt) && pt.length === 3 && pt.every(Number.isFinite))
+    ) {
+      setPrediction({ label: 'No valid hand detected', confidence: 0 });
+      return;
+    }
+    setIsSending(true);
+    try {
+      const res = await fetch('http://localhost:8000/predict-sign', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ landmarks })
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setPrediction({ label: data.detail || 'Error', confidence: 0 });
+      } else {
+        setPrediction(data);
+      }
+    } catch (err) {
+      setPrediction({ label: 'Error', confidence: 0 });
+    }
+    setIsSending(false);
   };
 
   // 벡터값을 보기 좋게 포맷팅하는 함수
@@ -73,7 +104,6 @@ const MainContent = () => {
           <div className="camera-section">
             <CSLTranslator onLandmarksUpdate={handleLandmarksUpdate} />
           </div>
-          
           <div className="text-box">
             <h2>Vectors of the landmarks (Console)</h2>
             <div className="text-output">
@@ -85,6 +115,20 @@ const MainContent = () => {
               }}>
                 {formatLandmarks(landmarks)}
               </pre>
+            </div>
+            <button onClick={handleSend} disabled={isSending} style={{ marginTop: 16, padding: '8px 16px', fontSize: 16 }}>
+              {isSending ? 'Sending...' : 'Capture & Predict'}
+            </button>
+            <div style={{ marginTop: 16 }}>
+              <h2>Prediction</h2>
+              {prediction ? (
+                <div style={{ color: '#222', fontWeight: 'bold', fontSize: 22, background: '#fff', padding: 8, borderRadius: 6, boxShadow: '0 1px 6px #0001', display: 'inline-block' }}>
+                  <b>Label:</b> {prediction.label} <br />
+                  <b>Confidence:</b> {prediction.confidence}
+                </div>
+              ) : (
+                <span style={{ color: '#444' }}>No prediction</span>
+              )}
             </div>
           </div>
         </div>
