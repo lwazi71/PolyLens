@@ -1,13 +1,115 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import CSLTranslator from './components/CSLTranslator';
-import './App.css'
+import History from './components/History';
+import Loading from './components/Loading';
+import InfoSection from './components/InfoSection';
+import './App.css';
+
+const MainContent = () => {
+  const navigate = useNavigate();
+  const [landmarks, setLandmarks] = useState(null);  // 벡터값 상태 추가
+
+  const handleLandmarksUpdate = (newLandmarks) => {
+    setLandmarks(newLandmarks);
+  };
+
+  // 벡터값을 보기 좋게 포맷팅하는 함수
+  const formatLandmarks = (landmarks) => {
+    if (!landmarks) return "No hand detected";
+    return landmarks.map((point, idx) => 
+      `Point ${idx}: (${point.map(v => v.toFixed(4)).join(', ')})`
+    ).join('\n');
+  };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            console.log('Section visible:', entry.target);
+          } 
+          else {
+            entry.target.classList.remove('visible');
+            console.log('Section hidden:', entry.target);
+          }
+        });
+      },
+      { 
+        threshold: 0.1,
+        rootMargin: '0px'
+      }
+    );
+
+    const sections = document.querySelectorAll('.animate-section');
+    sections.forEach((section) => {
+      if (!section.classList.contains('initial-view')) {
+        observer.observe(section);
+      }
+    });
+
+    return () => observer.disconnect();
+  }, []);
+  
+  return (
+    <div className="app-wrapper">
+      <div className="initial-view">
+        <div>Polylens</div>
+      </div>
+      <div className="scroll-sections">
+        <div className="animate-section">
+          <InfoSection />
+        </div>
+      </div>
+      
+      <button className="history-button" onClick={() => navigate('/history')}>
+        History
+      </button>
+      <h1>Let's try Polylens!</h1>
+        <p className="note-text">Note: Please make motion slowly!</p>
+        
+        <div className="translator-layout">
+          <div className="camera-section">
+            <CSLTranslator onLandmarksUpdate={handleLandmarksUpdate} />
+          </div>
+          
+          <div className="text-box">
+            <h2>Vectors of the landmarks (Console)</h2>
+            <div className="text-output">
+              <pre style={{ 
+                whiteSpace: 'pre-wrap', 
+                wordWrap: 'break-word',
+                maxHeight: '400px',
+                overflowY: 'auto'
+              }}>
+                {formatLandmarks(landmarks)}
+              </pre>
+            </div>
+          </div>
+        </div>
+    </div>
+  );
+};
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
+  };
+
+  if (isLoading) {
+    return <Loading onLoadingComplete={handleLoadingComplete} />;
+  }
+
   return (
-    <div>
-      <h1>Chinese Sign Language Translator</h1>
-      <CSLTranslator />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<MainContent />} />
+        <Route path="/history" element={<History />} />
+      </Routes>
+    </Router>
   );
 }
 

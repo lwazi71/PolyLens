@@ -1,0 +1,31 @@
+.communicate-section h2 {
+  color: #ffffff;
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.section-content p {
+  font-size: 3rem;
+  line-height: 1.6;
+  color: #ffffff;
+  opacity: 0.9;
+}
+
+.section-image {
+  flex: 1;
+  padding: 2rem;
+}
+
+.section-image img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.section-image img:hover {
+  transform: scale(1.02);
+}

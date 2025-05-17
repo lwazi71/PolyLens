@@ -1,0 +1,70 @@
+.history-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;           /* 추가 */
+  flex-direction: column;  /* 추가 */
+  align-items: center;     /* 추가 */
+}
+
+.back-button {
+  margin-top: 2rem;
+  padding: 0.8rem 2rem;
+  font-size: 1.5rem;
+  background: #646cff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: bold;
+}
+
+.back-button:hover {
+  background: #e0e0e0;
+}
+
+.history-container h1 {
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 2rem;
+}
+
+.history-table {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  overflow: hidden;
+  color: #6b6b6b;
+  width: 50%;
+  margin: 0 auto;
+  border-color: #6b6b6b;
+
+}
+
+.history-table table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.history-table th,
+.history-table td {
+  padding: 2rem;;
+  border-bottom: 1px solid #6b6b6b;
+  text-align: center;
+  border-width: 2px;
+  font-size: 1rem;
+}
+
+.history-table th {
+  background: #f8f9fa;
+  font-weight: 600;
+  border-width: 2px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.history-table tr:hover {
+  background: #f8f9fa;
+}
