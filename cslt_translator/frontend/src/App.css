@@ -28,13 +28,32 @@ body {
 }
 
 .app-wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  position: relative;
-  z-index: 2;  /* 상위 레이어에 배치 */
+  width: 100%;
+  min-height: 100vh;
 }
 
+.initial-view {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  box-sizing: border-box;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.translator-layout {
+  width: 100%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: stretch;
+}
 
 @keyframes logo-spin {
   from {
@@ -63,15 +82,14 @@ h1 {
   text-align: center;
   color: #ffffff;
   margin-bottom: 2rem;
+  font-size: 2.5rem;
 }
 
-.translator-layout {
-  margin-top: 2rem;
-  display: flex;
-  gap: 2rem;
-  align-items: stretch;
-  justify-content: center;
-  max-width: 1000px;
+.note-text {
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
 }
 
 .camera-section {
@@ -130,15 +148,21 @@ h1 {
   background: #565bc7;
 }
 
-.note-text {
-  text-align: center;
-  color: #ffffff;
-  margin-bottom: 2rem;
-  opacity: 0.8;
-  font-size: 1.2rem;
-  font-weight: 1000;
+/* 스크롤 애니메이션 기본 상태 */
+.animate-section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+  will-change: opacity, transform;
 }
 
+/* 보이는 상태 */
+.animate-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 첫 번째 섹션은 바로 보이도록 설정 */
 .initial-view {
   min-height: 100vh;
   display: flex;
@@ -146,4 +170,12 @@ h1 {
   align-items: center;
   justify-content: center;
   padding: 2rem;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* 스크롤 섹션 컨테이너 */
+.scroll-sections {
+  width: 100%;
+  margin-top: 2rem;
 }

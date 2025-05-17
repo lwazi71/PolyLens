@@ -11,9 +11,6 @@
   min-height: 100vh;
   padding: 6rem 2rem;
   gap: 4rem;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: all 1s ease-out;
   background: #ffffff;  /* 흰색 배경 */
 }
 

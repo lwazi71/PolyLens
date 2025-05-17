@@ -19,7 +19,7 @@ const MainContent = () => {
         </button>
       </div>
 
-      {/* Right side */}
+      {/* Right side  */}
       <div className="hero-right">
         <CSLTranslator />
       </div>
