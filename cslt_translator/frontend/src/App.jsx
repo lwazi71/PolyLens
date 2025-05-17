@@ -62,7 +62,7 @@ const MainContent = () => {
           </div>
           
           <div className="text-box">
-            <h2>Translated Text (English)</h2>
+            <h2>Vectors of the landmarks (Console)</h2>
             <div className="text-output">
               Hello! (or translation result here)
             </div>
