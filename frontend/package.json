@@ -1,0 +1,28 @@
+{
+  "name": "sign-language-translator",
+  "version": "1.0.0",
+  "description": "A real-time sign language translation application using OpenCV for hand tracking.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3"
+  },
+  "devDependencies": {
+    "opencv.js": "^1.0.0"
+  },
+  "keywords": [
+    "sign language",
+    "translation",
+    "opencv",
+    "react"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
