@@ -22,11 +22,17 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-
   background: linear-gradient(135deg, #6a85f1, #b67be8);
-  
   color: white;
   min-height: 100vh;
+}
+
+.app-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+  z-index: 2;  /* 상위 레이어에 배치 */
 }
 
 
@@ -53,12 +59,6 @@ body {
   color: #888;
 }
 
-.app-wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
 h1 {
   text-align: center;
   color: #ffffff;
@@ -66,12 +66,12 @@ h1 {
 }
 
 .translator-layout {
+  margin-top: 2rem;
   display: flex;
   gap: 2rem;
   align-items: stretch;
   justify-content: center;
   max-width: 1000px;
-  margin: 0 auto;
 }
 
 .camera-section {
@@ -110,6 +110,10 @@ h1 {
 }
 
 .history-button {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 100;
   margin-top: 2rem;
   padding: 0.8rem 2rem;
   font-size: 1.5rem;
@@ -133,4 +137,13 @@ h1 {
   opacity: 0.8;
   font-size: 1.2rem;
   font-weight: 1000;
+}
+
+.initial-view {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
 }

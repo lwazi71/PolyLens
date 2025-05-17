@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-route
 import CSLTranslator from './components/CSLTranslator';
 import History from './components/History';
 import Loading from './components/Loading';
+import InfoSection from './components/InfoSection';
 import './App.css';
 
 const MainContent = () => {
@@ -10,20 +11,25 @@ const MainContent = () => {
   
   return (
     <div className="app-wrapper">
-      <h1>Chinese Sign Language Translator</h1>
-      <p className="note-text">Note: Please make motion slowly!</p>
-      <div className="translator-layout">
-        <div className="camera-section">
-          <CSLTranslator />
-        </div>
+      <div className="initial-view">
+        <h1>Chinese Sign Language Translator</h1>
+        <p className="note-text">Note: Please make motion slowly!</p>
         
-        <div className="text-box">
-          <h2>Translated Text (English)</h2>
-          <div className="text-output">
-            Hello! (or translation result here)
+        <div className="translator-layout">
+          <div className="camera-section">
+            <CSLTranslator />
+          </div>
+          
+          <div className="text-box">
+            <h2>Translated Text (English)</h2>
+            <div className="text-output">
+              Hello! (or translation result here)
+            </div>
           </div>
         </div>
       </div>
+
+      <InfoSection />
       
       <button className="history-button" onClick={() => navigate('/history')}>
         History
