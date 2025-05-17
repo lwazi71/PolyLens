@@ -23,7 +23,6 @@ const InfoSection = () => {
       <div className="info-sections">
         <CommunicateSection />
         <TranslationSection />
-        <LearnSection />
       </div>
     </>
   );
