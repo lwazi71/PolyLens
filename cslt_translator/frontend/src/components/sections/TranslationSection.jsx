@@ -5,7 +5,7 @@ const TranslationSection = () => {
         <h2>Real-time Translation</h2>
         <p>Our advanced AI model detects and translates sign language gestures instantly.</p>
       </div>
-      <img src="/images/section3.jpg" alt="Translation demonstration" />
+      <img src="https://www.uploadvr.com/content/images/size/w1200/2021/04/QuestHandTrackingGreyscale.png" alt="Translation demonstration" />
     </section>
   );
 };
