@@ -9,22 +9,17 @@ const History = () => {
   const historyData = [
     { id: 1, landmark: "Hand position A", timestamp: "2025-05-17 10:30:45" },
     { id: 2, landmark: "Hand position B", timestamp: "2025-05-17 10:31:22" },
-    // ... more data
   ];
 
   return (
     <div className="history-container">
-      <button onClick={() => navigate('/')} className="back-button">
-        ← Back
-      </button>
-      
       <h1>History</h1>
       
       <div className="history-table">
         <table>
           <thead>
             <tr>
-              <th>Prev_Hand landmark</th>
+              <th>Previous landmarks</th>
               <th>Time</th>
             </tr>
           </thead>
@@ -38,6 +33,10 @@ const History = () => {
           </tbody>
         </table>
       </div>
+
+      <button onClick={() => navigate('/')} className="back-button">
+        ← Back
+      </button>
     </div>
   );
 };

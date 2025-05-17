@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import CSLTranslator from './components/CSLTranslator';
 import History from './components/History';
+import Loading from './components/Loading';
 import './App.css';
 
 const MainContent = () => {
@@ -10,6 +11,7 @@ const MainContent = () => {
   return (
     <div className="app-wrapper">
       <h1>Chinese Sign Language Translator</h1>
+      <p className="note-text">Note: Please make motion slowly!</p>
       <div className="translator-layout">
         <div className="camera-section">
           <CSLTranslator />
@@ -31,6 +33,16 @@ const MainContent = () => {
 };
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
+  };
+
+  if (isLoading) {
+    return <Loading onLoadingComplete={handleLoadingComplete} />;
+  }
+
   return (
     <Router>
       <Routes>

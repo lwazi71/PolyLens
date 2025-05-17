@@ -18,6 +18,18 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+
+  background: linear-gradient(135deg, #6a85f1, #b67be8);
+  
+  color: white;
+  min-height: 100vh;
+}
+
+
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -49,7 +61,7 @@
 
 h1 {
   text-align: center;
-  color: #333;
+  color: #ffffff;
   margin-bottom: 2rem;
 }
 
@@ -65,6 +77,7 @@ h1 {
 .camera-section {
   flex: 0 0 480px;
   width: 480px;
+  height: 360px;
 }
 
 .text-box {
@@ -77,6 +90,7 @@ h1 {
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
 }
 
 .text-box h2 {
@@ -88,8 +102,9 @@ h1 {
 
 .text-output {
   flex: 1;
+  color: #333;
   padding: 15px;
-  background: #f5f5f5;
+  background: #eeeeee;;
   border-radius: 4px;
   overflow-y: auto;
 }
@@ -97,15 +112,25 @@ h1 {
 .history-button {
   margin-top: 2rem;
   padding: 0.8rem 2rem;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   background: #646cff;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s;
+  font-weight: bold;
 }
 
 .history-button:hover {
   background: #565bc7;
+}
+
+.note-text {
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 2rem;
+  opacity: 0.8;
+  font-size: 1.2rem;
+  font-weight: 1000;
 }
