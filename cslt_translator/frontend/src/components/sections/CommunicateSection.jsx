@@ -7,7 +7,9 @@ const CommunicateSection = () => {
         <h2>Communicate Without Boundaries</h2>
         <p>Experience real-time sign language translation powered by advanced RoboServant.</p>
       </div>
-      <img src="/images/section1.jpg" alt="Sign language demonstration" />
+      <div className="section-image">
+        <img src="/images/communicate.jpg" alt="Sign language communication demonstration" />
+      </div>
     </section>
   );
 };

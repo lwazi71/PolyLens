@@ -11,3 +11,21 @@
   color: #ffffff;  /* 하얀색으로 변경 */
   opacity: 0.9;    /* 살짝 투명도 추가하여 가독성 향상 */
 }
+
+.section-image {
+  flex: 1;
+  padding: 2rem;
+}
+
+.section-image img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.section-image img:hover {
+  transform: scale(1.02);
+}
