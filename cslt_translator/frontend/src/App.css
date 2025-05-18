@@ -1,7 +1,7 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0;
   text-align: center;
 }
 
@@ -25,6 +25,7 @@ body {
   background: linear-gradient(135deg, #6a85f1, #b67be8);
   color: white;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .app-wrapper {
@@ -114,18 +115,20 @@ body {
 }
 
 h1 {
-  margin-top: 5rem;
+  margin-top: 6rem;
   text-align: center;
   color: #ffffff;
   margin-bottom: 2rem;
-  font-size: 4rem;
+  font-size: 5rem;
+  font-weight: bold;
 }
 
 .note-text {
   text-align: center;
   color: #ffffff;
   margin-bottom: 2rem;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+  font-weight: 800;
 }
 
 .camera-section {
@@ -197,6 +200,7 @@ h1 {
   transform: translateY(50px);
   transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
   will-change: opacity, transform;
+  margin-bottom: 20rem;
 }
 
 /* 보이는 상태 */
@@ -220,5 +224,5 @@ h1 {
 /* 스크롤 섹션 컨테이너 */
 .scroll-sections {
   width: 100%;
-  margin: 2rem 0 8rem 0;
+  padding: 0;
 }

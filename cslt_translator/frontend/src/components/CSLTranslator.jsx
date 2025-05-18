@@ -102,13 +102,21 @@ const CSLTranslator = ({ onLandmarksUpdate }) => {
     function onResults(results) {
       const ctx = canvasRef.current?.getContext('2d');
       ctx && ctx.clearRect(0, 0, 480, 360);
-      
       if (results.multiHandLandmarks && results.multiHandLandmarks.length > 0) {
+        const normLandmarks = results.multiHandLandmarks[0].map(pt => [pt.x, pt.y, pt.z]);
+        // Only call onLandmarksUpdate if valid
+        const isValid = Array.isArray(normLandmarks) &&
+          normLandmarks.length === 21 &&
+          normLandmarks.every(pt => Array.isArray(pt) && pt.length === 3 && pt.every(Number.isFinite));
+        if (isValid) {
+          onLandmarksUpdate(normLandmarks);
+        } else {
+          onLandmarksUpdate(null);
+        }
         const landmarks = results.multiHandLandmarks[0].map(pt => [pt.x * 480, pt.y * 360]);
         if (ctx) drawHand(ctx, landmarks, HAND_CONNECTIONS);
-        
-        const normLandmarks = results.multiHandLandmarks[0].map(pt => [pt.x, pt.y, pt.z]);
-        onLandmarksUpdate(normLandmarks);
+      } else {
+        onLandmarksUpdate(null);
       }
     }
 

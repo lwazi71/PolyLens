@@ -10,8 +10,8 @@ app = FastAPI()
 # CORS for local frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
-    allow_methods=["GET", "POST"],
+    allow_origins=["http://localhost:3000", "http://localhost:5173"],
+    allow_methods=["*"],
     allow_headers=["*"],
 )
 
@@ -28,6 +28,8 @@ def predict_sign_endpoint(payload: LandmarksRequest):
         label, confidence = predict_sign(payload.landmarks)
         chinese_label = label_to_chinese(label)
         return PredictionResponse(label=chinese_label, confidence=confidence)
+    except ValueError as ve:
+        raise HTTPException(status_code=400, detail=str(ve))
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
