@@ -1,0 +1,88 @@
+.translation-section {
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 750px;
+  box-sizing: border-box;
+}
+
+.blur-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  padding: 8rem 0;
+  background-image: url("https://www.uploadvr.com/content/images/size/w1200/2021/04/QuestHandTrackingGreyscale.png");
+  background-size: cover;
+  background-position: center;
+  filter: blur(5px) brightness(0.7);
+  z-index: 0;
+}
+
+.section-content-wrapper {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+  width: 100%;
+  padding: 0 5vw;
+}
+
+.section-content {
+  max-width: 500px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.section-content h2 {
+  font-size: 3rem;
+  color: #ffffff;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.section-content p {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #e5e7eb;
+}
+
+.section-content-wrapper img {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.section-content-wrapper img:hover {
+  transform: scale(1.05);
+}
+
+.animate-section {
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

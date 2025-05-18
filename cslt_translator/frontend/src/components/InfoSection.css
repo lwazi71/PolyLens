@@ -1,7 +1,7 @@
 .info-sections {
   position: relative;
-  width: 100%;
-  margin-top: 2rem;  /* 메인 컨텐츠와의 간격 */
+  width: 100vw;
+  margin-top: 2rem;
 }
 
 .info-section {
@@ -9,17 +9,18 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  padding: 6rem 2rem;
+  padding: 0;
   gap: 4rem;
-  background: #ffffff;  /* 흰색 배경 */
+  background: #ffffff;
+  margin-bottom: 20rem;
 }
 
 .info-section:first-child {
-  background: transparent;  /* 첫 번째 섹션은 투명 배경 */
+  background: transparent;
 }
 
 .info-section:not(:first-child) {
-  background-color: #ffffff;  /* 첫 섹션 이후의 배경색 */
+  background-color: #ffffff;
 }
 
 .info-section.visible {
@@ -34,14 +35,13 @@
 
 .section-content {
   flex: 1;
-  max-width: 500px;
   z-index: 2;
 }
 
 .section-content h2 {
   font-size: 3.2rem;
   margin-bottom: 1.5rem;
-  color: #ffffff;  /* 검정색 텍스트 */
+  color: #ffffff;
 }
 
 .section-content p {
@@ -71,7 +71,6 @@
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* 스크롤 트랜지션을 위한 오버레이 */
 .color-transition {
   position: fixed;
   top: 0;
@@ -85,7 +84,6 @@
   z-index: 1;
 }
 
-/* 스크롤 시 색상 전환 */
 .color-transition.hidden {
   opacity: 0;
 }
