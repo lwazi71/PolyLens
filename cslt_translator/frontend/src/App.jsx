@@ -45,7 +45,6 @@ const MainContent = () => {
     setIsSending(false);
   };
 
-  // 벡터값을 보기 좋게 포맷팅하는 함수
   const formatLandmarks = (landmarks) => {
     if (!landmarks) return "No hand detected";
     return landmarks.map((point, idx) => 
