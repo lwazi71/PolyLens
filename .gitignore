@@ -1,0 +1,15 @@
+# Root dependency folders
+node_modules/
+
+# Backend local environment and caches
+backend/venv/
+backend/__pycache__/
+
+# Frontend generated artifacts
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Python bytecode
+**/__pycache__/
+*.py[cod]
